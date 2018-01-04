@@ -12,7 +12,7 @@ elif [ $# -eq 1 ]; then
     exit 1
 else
     while true; do
-        inotifywait -e close_write -e delete -r $1
+        inotifywait -e close_write -e delete -e move -r $1
         for host in ${@:2}; do
             echo "Syncing $host..."
             rsync --delete -rt $1 $host:
